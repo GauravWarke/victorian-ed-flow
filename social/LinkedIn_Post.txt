@@ -1,0 +1,13 @@
+In Victoria, the share of ambulance handovers completed within 40 minutes rose for two years running, from 64.9% in 2023–24 to 70.8% in 2025–26. Over those same two years, the share of emergency department visits lasting under four hours fell from 54.0% to 49.8%.
+
+I built Victorian ED Flow to answer a practical question: if I were reviewing these figures with a hospital operations team, where would we start?
+
+I’d start with length of stay. At 49.8%, Victoria was 25.2 percentage points below its 75% target. That was the largest gap across the four standards I reviewed.
+
+My first step at a hospital would be to look separately at patients who were admitted and those who were discharged. For admitted patients, I’d compare the wait for first treatment with the wait for a bed after the decision to admit. The team’s next step depends on where patients spent that time.
+
+The handover figures cover ambulance transfers. The four-hour figures cover all ED visits. Finding out what caused a delay at a particular hospital takes local records.
+
+I’ve included the source data, calculations and business requirements alongside the dashboard so others can check the figures and use them in their own reviews.
+
+#HealthcareAnalytics #BusinessAnalysis #Victoria
