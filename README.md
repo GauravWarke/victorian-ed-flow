@@ -1,38 +1,48 @@
 # Victorian ED Flow
 
-Which part of emergency care should a service review first? In 2025–26 the proportion of ED visits under four hours was 25.2 percentage points below target, the largest gap of four monitored Victorian standards.
+**Where should an emergency department operations team investigate delays first?** In Victoria’s 2025–26 results, **49.8% of emergency department (ED) visits ended within four hours**, against a 75% target. That 25.2 percentage point gap was the largest of the four standards reviewed. Total time in the ED is the first measure this project recommends investigating locally.
 
-Open **index.html** in a browser. It runs offline. For GitHub Pages, publish the branch containing these files from its root directory.
+## The business problem
 
-- **data/annual-results.csv** — eight published annual observations with source links.
-- **docs/ba/** — business case through glossary, including requirements, tests and traceability.
-- **docs/Business_Analysis.docx** — formatted BA pack.
-- **tests/check_register.py** — run `python tests/check_register.py` from the repository to verify the register and headline calculations.
-- **social/** — LinkedIn draft, two figures and image descriptions.
+Ambulance handover, the start of treatment and departure from the ED are different points in a patient’s journey. An improvement at one point can coincide with longer stays overall. An ED operations lead needs to know which measure warrants attention before asking clinical, ambulance or bed management teams to investigate.
 
-The annual measures cover different patient groups. Hospital-level delay, causes and service impact need local records. Educational portfolio project. Not clinical advice.
+## What the data shows
 
-Author: Gaurav Warke. Source publications retain their original terms. A licence for the original project files has yet to be selected.
+| Victorian emergency care standard, 2025–26 | Reported result | Target | Gap to target |
+|---|---:|---:|---:|
+| ED visit under four hours | 49.8% | 75% | 25.2 percentage points |
+| Ambulance handover within 40 minutes | 70.8% | 90% | 19.2 percentage points |
+| Treatment within the triage time standard | 70.3% | 80% | 9.7 percentage points |
+| Category 1 patients treated immediately | 100% | 100% | Target met |
 
-## GitHub setup
+The three-year trend gives the first two rows context. From 2023–24 to 2025–26, the share of ambulance transfers completed within 40 minutes rose from **64.9% to 70.8%**. Over the same period, the share of ED visits under four hours fell from **54.0% to 49.8%**. The measures cover different patient groups. Their difference cannot be used to calculate how long patients waited after handover.
 
-Suggested repository name: `victorian-ed-flow`
+![Three-year trends for ambulance handover and emergency department length of stay](social/ED_Flow_2.png)
 
-Description: Victorian emergency department performance across four time standards, with public source data and reproducible checks.
+## What a hospital could do next
 
-1. Create an empty public repository and extract this package locally. Keep index.html at the top level.
-2. From the extracted directory, run the commands below. Replace YOUR-ACCOUNT with the GitHub account that owns the empty repository.
+Separate visits that ended in admission from those that ended in discharge. For admitted patients, compare the time from arrival to first treatment with the time from the admission decision to departure. Review visit counts and missing timestamps by shift. A delay before treatment raises a different operational question from a delay while a patient waits for an inpatient bed.
 
-```sh
-python tests/check_register.py
-git init -b main
-git add .
-git commit -m "Publish Victorian ED Flow dashboard and evidence pack"
-git remote add origin https://github.com/YOUR-ACCOUNT/victorian-ed-flow.git
-git push -u origin main
-```
+This is a proposed investigation. The public figures do not identify a hospital, explain a delay or demonstrate an improvement in patient care.
 
-3. In repository Settings > Pages, select Deploy from a branch, choose main and /(root), then Save.
-4. Once deployed, open Visit site, check all four views and download the register. Add the verified site URL to the repository About field and the LinkedIn post.
+## Technology
 
-[GitHub Pages publishing instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)
+| Tool | Role in this project |
+|---|---|
+| R | [Independent analysis](analysis/review_flow.R) ranks target gaps, counts standards met and calculates changes across reporting years. |
+| Python | [Validation](tests/check_register.py) checks the dashboard download against the source register and tests the headline figures. |
+| HTML and CSS | Deliver the interactive dashboard as a single offline page. |
+
+Run the analysis from the repository root with `Rscript analysis/review_flow.R` and `python tests/check_register.py`.
+
+**Gaurav’s wider analytics toolkit:** SQL, Power BI, Excel and Tableau.
+
+## Evidence and business analysis
+
+The dashboard brings together eight published measure–year results from Victorian government performance reports. Each row in the source register links to its publication. Only handover and length of stay have three annual observations in this extract. The Python check compares the register with the dashboard download and recalculates the headline gaps.
+
+- [Dashboard file](index.html) — four views covering service priorities, ambulance handover, length of stay and evidence.
+- [Source register](data/annual-results.csv) and [validation checks](tests/check_register.py).
+- [Business analysis report](docs/Business_Analysis.docx) and [working documents](docs/ba/) — business case, stakeholder roles, requirements and acceptance criteria.
+
+**Author:** Gaurav Warke. Educational portfolio project. Not clinical advice. Source publications retain their original terms. A licence for the original project files has yet to be selected.
